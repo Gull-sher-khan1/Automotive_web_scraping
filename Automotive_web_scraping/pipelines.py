@@ -22,7 +22,7 @@ class NewsPipeline:
     def process_item(self, news, _spider):
         """Method for parsing and storing item"""
         table = self.db[self.cred['table']]
-        for i in range(len(news['head'])):
+        for i in range(len(news['heading'])):
             table.insert(
                 dict(
                     image_link = news['image_link'][i],\

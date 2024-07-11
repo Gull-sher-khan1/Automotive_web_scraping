@@ -1,13 +1,13 @@
 {
     "pmmonline.co.uk": {
-            "allow": ["/news/page/", "category/news"],
+            "allow": ["/news/page/", "/category/news"],
             "startPath": ["/category/news"],
             "format": {
-                "site_link": "li[itemscope] [itemprop='headline'] a::attr(href)",
-                "heading": "li[itemscope] [itemprop='headline'] a::text",
-                "body": "li[itemscope] div.entry-content p::text",
+                "site_link": "li[itemscope] .cat-grid-title[itemprop='headline'] a::attr(href)",
+                "heading": "li[itemscope] .cat-grid-title[itemprop='headline'] a::text",
+                "body": "li[itemscope] div.entry-content.cat-grid-meta p::text",
                 "image_link": "li[itemscope] figure.post-thumbnail img::attr(src)",
-                "publish_date": "li[itemscope] time[itemprop='datePublished']::attr(datetime)"
+                "publish_date": "li[itemscope] .cat-grid-meta time[itemprop='datePublished']::attr(datetime)"
             }
         }
 }
