@@ -1,7 +1,9 @@
 """Contains utilities used through out the project"""
 import json
+import re
+from datetime import datetime
 
-class FormatData:
+class DataFormater:
     """Class for formating the data obtained from config.json"""
     def __init__(self, name):
         self.data_file = f"{name}.json"
@@ -14,3 +16,16 @@ class FormatData:
     def get_data(self, site):
         """Returns the data needed for formating related to a site"""
         return self.data[site]
+    
+class StringTransformer:
+    """Class for transforming string"""
+
+    @classmethod
+    def to_datetime(cls, string):
+        """Converts the timestamp to datetime"""
+        return datetime.strptime(string, "%Y-%m-%dT%H:%M:%S%z")
+
+    @classmethod
+    def remove_whitespaces(cls, string):
+        """Removes white spaces and other characters from string"""
+        return ' '.join(re.sub(r'[^\w\s]','',string).split())

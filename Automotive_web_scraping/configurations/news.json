@@ -3,11 +3,11 @@
             "allow": ["/news/page/"],
             "startPath": ["/category/news"],
             "format": {
-                "link": "li[itemscope] [itemprop='headline'] a::attr(href)",
-                "head": "li[itemscope] [itemprop='headline'] a::text",
+                "site_link": "li[itemscope] [itemprop='headline'] a::attr(href)",
+                "heading": "li[itemscope] [itemprop='headline'] a::text",
                 "body": "li[itemscope] div.entry-content p::text",
-                "image": "li[itemscope] figure.post-thumbnail img::attr(src)",
-                "publishDate": "li[itemscope] time[itemprop='datePublished']::attr(datetime)"
+                "image_link": "li[itemscope] figure.post-thumbnail img::attr(src)",
+                "publish_date": "li[itemscope] time[itemprop='datePublished']::attr(datetime)"
             }
         }
 }
