@@ -11,11 +11,11 @@ Needed for scraping and starting project.
     pip install scrapy
 ```
 
-2. Psycopg2
+2. Dataset
 
 Needed for queries and storing news in DB.
 ```
-    pip install psycopg2
+    pip install dataset
 ```
 
 ## Procedure
