@@ -16,7 +16,7 @@ class NewsSpider(CrawlSpider):
         super().__init__(*a, **kw)
         if site is not None:
             self.data = DataFormater(self.name).get_data(site)
-            self.start_urls = map(lambda path: f"https://{site + path}", self.data['startPath'])
+            self.start_urls = [f"https://www.{site + path}" for path in self.data['startPath']]
             self.rules = tuple(map(lambda rl: (Rule(LinkExtractor(allow=fr"{rl}"),\
                                                     callback="parse_item",\
                                                     follow=True)), self.data['allow']))

@@ -1,12 +1,4 @@
-# Scrapy settings for Automotive_web_scraping project
-#
-# For simplicity, this file contains only settings considered important or
-# commonly used. You can find more settings consulting the documentation:
-#
-#     https://docs.scrapy.org/en/latest/topics/settings.html
-#     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-#     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-
+"""Scrapy settings"""
 BOT_NAME = "Automotive_web_scraping"
 
 SPIDER_MODULES = ["Automotive_web_scraping.spiders"]
@@ -14,7 +6,7 @@ NEWSPIDER_MODULE = "Automotive_web_scraping.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "Automotive_web_scraping (+http://www.yourdomain.com)"
+USER_AGENT = "Automotive_web_scraping"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -25,9 +17,9 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See https://docs.scrapy.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
+CONCURRENT_REQUESTS_PER_DOMAIN = 16
 #CONCURRENT_REQUESTS_PER_IP = 16
 
 # Disable cookies (enabled by default)
@@ -62,9 +54,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    "Automotive_web_scraping.pipelines.AutomotiveWebScrapingPipeline": 300,
-#}
+ITEM_PIPELINES = {
+   "Automotive_web_scraping.pipelines.NewsPipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

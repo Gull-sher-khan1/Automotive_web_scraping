@@ -1,6 +1,6 @@
 {
     "pmmonline.co.uk": {
-            "allow": ["/news/page/"],
+            "allow": ["/news/page/", "category/news"],
             "startPath": ["/category/news"],
             "format": {
                 "site_link": "li[itemscope] [itemprop='headline'] a::attr(href)",
