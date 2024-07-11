@@ -7,22 +7,22 @@ Please ensure that virtual environment has been set in case if it is needed befo
 1. Scrapy
 
 Needed for scraping and starting project.
-'''
+```
     pip install scrapy
-'''
+```
 
 2. Psycopg2
 
 Needed for queries and storing news in DB.
-'''
+```
     pip install psycopg2
-'''
+```
 
 ## Procedure
 
 In order to scrap from the website please add configurations in 'news.json' file in following format.
 
-'''
+```
     "[domain name]": {
         "allow": [[URLs that are allowed to scrape in form of list]],
             "startPath": [[Starting URLs in form of list]],
@@ -34,10 +34,10 @@ In order to scrap from the website please add configurations in 'news.json' file
                     "publish_date": "[CSS Selectors]"
                 }
             }
-'''
+```
 
 After that please configure the db.json file.
-'''
+```
     {
         "postgresql": {
             "username": "[user name]",
@@ -46,9 +46,9 @@ After that please configure the db.json file.
             "table": "[table name]"
         }
     }
-'''
+```
 
 News can be crawled from websites using following command
-'''
+```
     scrapy crawl news site=[domain name available in news.json]
-'''
+```
