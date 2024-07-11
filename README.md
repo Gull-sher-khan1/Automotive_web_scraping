@@ -23,17 +23,19 @@ Needed for queries and storing news in DB.
 In order to scrap from the website please add configurations in 'news.json' file in following format.
 
 ```
-    "[domain name]": {
-        "allow": [[URLs that are allowed to scrape in form of list]],
-            "startPath": [[Starting URLs in form of list]],
-            "format": {
-                    "site_link": "[CSS Selectors]",
-                    "heading": "[CSS Selectors]",
-                    "body": "[CSS Selectors]",
-                    "image_link": "[CSS Selectors]",
-                    "publish_date": "[CSS Selectors]"
+    {
+        "[domain name]": {
+            "allow": [[URLs that are allowed to scrape in form of list]],
+                "startPath": [[Starting URLs in form of list]],
+                "format": {
+                        "site_link": "[CSS Selectors]",
+                        "heading": "[CSS Selectors]",
+                        "body": "[CSS Selectors]",
+                        "image_link": "[CSS Selectors]",
+                        "publish_date": "[CSS Selectors]"
+                    }
                 }
-            }
+    }
 ```
 
 After that please configure the db.json file.
