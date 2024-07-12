@@ -26,15 +26,16 @@ In order to scrap from the website please add configurations in 'news.json' file
     {
         "[domain name]": {
             "allow": [[URLs that are allowed to scrape in form of list]],
-                "startPath": [[Starting URLs in form of list]],
-                "format": {
-                        "site_link": "[CSS Selectors]",
-                        "heading": "[CSS Selectors]",
-                        "body": "[CSS Selectors]",
-                        "image_link": "[CSS Selectors]",
-                        "publish_date": "[CSS Selectors]"
-                    }
+            "startPath": [[Starting URLs in form of list]],
+            "format": {
+                    "individual_objects": "[CSS selector for repetitive news / items / objects acting as a parent to 'site_link', 'heading', etc.]"
+                    "site_link": "[CSS Selectors]",
+                    "heading": "[CSS Selectors]",
+                    "body": "[CSS Selectors]",
+                    "image_link": "[CSS Selectors]",
+                    "publish_date": "[CSS Selectors]"
                 }
+            }
     }
 ```
 
