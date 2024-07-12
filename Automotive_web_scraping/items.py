@@ -12,4 +12,4 @@ class NewsItem(scrapy.Item):
     body = scrapy.Field(
         output_processor = MapCompose(StringTransformer.remove_whitespaces))
     publish_date = scrapy.Field(
-        output_processor = MapCompose(StringTransformer.to_datetime))
+        output_processor = MapCompose(StringTransformer.remove_whitespaces))

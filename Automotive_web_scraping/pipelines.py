@@ -22,11 +22,10 @@ class NewsPipeline:
     def process_item(self, news, _spider):
         """Method for parsing and storing item"""
         table = self.db[self.cred['table']]
-        for i in range(len(news['heading'])):
-            table.insert(
-                dict(
-                    image_link = news['image_link'][i],\
-                    site_link = news['site_link'][i],\
-                    heading = news['heading'][i],\
-                    body = news['body'][i],\
-                    publish_date = news['publish_date'][i]))
+        table.insert(
+            dict(
+                image_link = news['image_link'][0] if 'image_link' in news else '',\
+                site_link = news['site_link'][0],\
+                heading = news['heading'][0],\
+                body = news['body'][0],\
+                publish_date = news['publish_date'][0]))
