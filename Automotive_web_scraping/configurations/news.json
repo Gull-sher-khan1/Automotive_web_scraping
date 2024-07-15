@@ -22,5 +22,17 @@
                 "image_link": ".widget-item__img img[itemprop='thumbnailUrl']::attr(src)",
                 "publish_date": ".widget-item__text .widget-item__footer--date::text"
             }
-        }
+        },
+    "aftermarketonline.net": {
+            "allow": ["/tag/", "/category/"],
+            "startPath": ["/category/news"],
+            "format": {
+                "individual_objects": "article.tease-post",
+                "site_link": "h2.h2 a::attr(href)",
+                "heading": "h2.h2 a::text",
+                "body": "p::text",
+                "image_link": "img.img-fluid.left::attr(src)",
+                "publish_date": "span.article-date::text"
+            }
+        }    
 }
