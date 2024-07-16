@@ -11,8 +11,8 @@ class NewsPipeline:
         """callback when spider is opened"""
         self.cred = DataFormater("db").get_data("postgresql")
         self.db = dataset.connect(
-            f'postgresql://{self.cred['username']}:{self.cred['password']}'
-            + f'@localhost:5432/{self.cred['database']}')
+            f'postgresql://{self.cred["username"]}:{self.cred["password"]}'
+            + f'@localhost:5432/{self.cred["database"]}')
 
     def close_spider(self, _spider):
         """Callback the closes the db and runs query when spider is closed"""
