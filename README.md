@@ -53,5 +53,5 @@ After that please configure the db.json file.
 
 News can be crawled from websites using following command
 ```
-    scrapy crawl news site=[domain name available in news.json]
+    scrapy crawl news -a site=[domain name available in news.json]
 ```
