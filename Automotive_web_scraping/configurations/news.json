@@ -24,7 +24,7 @@
             }
         },
     "aftermarketonline.net": {
-            "allow": ["/tag/", "/category/"],
+            "allow": ["/category/news"],
             "startPath": ["/category/news"],
             "format": {
                 "individual_objects": ".container .tease.tease-post",
@@ -34,5 +34,17 @@
                 "image_link": ".tease.tease-post img::attr(src)",
                 "publish_date": ".tease.tease-post .article-date::text"
             }
-        }    
+        },
+    "catmag.co.uk": {
+            "allow": [ "/news"],
+            "startPath": ["/news"],
+            "format": {
+                "individual_objects": ".posts .card",
+                "site_link": ".card-title h3 a::attr(href)",
+                "heading": ".card-title h3 a::text",
+                "body": "p::text",
+                "image_link": ".card-img img::attr(src)",
+                "publish_date": ".post-date  p::text"
+            }
+    }    
 }
