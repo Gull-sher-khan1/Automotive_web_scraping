@@ -42,16 +42,18 @@ In order to scrap from the website please add configurations in 'news.json' file
 After that please configure the db.json file.
 ```
     {
-        "postgresql": {
+        "credentials": {
+            "database": "[sqlite/mysql/postgresql]"
             "username": "[user name]",
             "password": "[user password]",
-            "database": "[database name]",
-            "table": "[table name]"
+            "db_name": "[database name]",
+            "host": "[host name]",
+            "port": "[port number]"
         }
     }
 ```
 
 News can be crawled from websites using following command
 ```
-    scrapy crawl news site=[domain name available in news.json]
+    scrapy crawl news -a site=[domain name available in news.json]
 ```
