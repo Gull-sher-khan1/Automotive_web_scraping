@@ -1,13 +1,32 @@
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
+"""Contains the functionality for storing scraped data"""
+import dataset
+from .utils.data_utils import DataFormater
 
+class NewsPipeline:
+    """Pipeline for storing and parsing news into database"""
+    cred = {}
+    db = None
 
-# useful for handling different item types with a single interface
-from itemadapter import ItemAdapter
+    def open_spider(self, _spider):
+        """callback when spider is opened"""
+        self.cred = DataFormater("db").get_data("postgresql")
+        self.db = dataset.connect(
+            f'postgresql://{self.cred['username']}:{self.cred['password']}'
+            + f'@localhost:5432/{self.cred['database']}')
 
+    def close_spider(self, _spider):
+        """Callback the closes the db and runs query when spider is closed"""
+        self.db.commit()
+        self.db.close()
 
-class AutomotiveWebScrapingPipeline:
-    def process_item(self, item, spider):
-        return item
+    def process_item(self, news, _spider):
+        """Method for parsing and storing item"""
+        table = self.db[self.cred['table']]
+        for i in range(len(news['heading'])):
+            table.insert(
+                dict(
+                    image_link = news['image_link'][i],\
+                    site_link = news['site_link'][i],\
+                    heading = news['heading'][i],\
+                    body = news['body'][i],\
+                    publish_date = news['publish_date'][i]))
