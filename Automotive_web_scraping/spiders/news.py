@@ -3,6 +3,7 @@
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.loader import ItemLoader
+from scrapy import Selector
 from ..items import NewsItem
 from ..utils.data_utils import DataFormater
 
@@ -24,10 +25,14 @@ class NewsSpider(CrawlSpider):
         self.start_urls = [f"https://{site + path}" for path in self.data['startPath']]
         self.allowed_domains = [site]
         self.data = self.data['format']
+        self.individual_ojects = self.data['individual_objects']
+        del self.data['individual_objects']
 
     def parse_item(self, response):
         """Parses scrapped data from website"""
-        news = ItemLoader(item = NewsItem(), response = response)
-        for attr_name, selector in self.data.items():
-            news.add_css(attr_name, selector)
-        return news.load_item()
+        items = response.css(self.individual_ojects)
+        for item in items.getall():
+            news = ItemLoader(item = NewsItem())
+            for attr_name, selector in self.data.items():
+                news.add_value(attr_name, Selector(text = item).css(selector).get())
+            yield news.load_item()

@@ -3,11 +3,24 @@
             "allow": ["/news/page/", "/category/news"],
             "startPath": ["/category/news"],
             "format": {
-                "site_link": "li[itemscope] .cat-grid-title[itemprop='headline'] a::attr(href)",
-                "heading": "li[itemscope] .cat-grid-title[itemprop='headline'] a::text",
-                "body": "li[itemscope] div.entry-content.cat-grid-meta p::text",
-                "image_link": "li[itemscope] figure.post-thumbnail img::attr(src)",
-                "publish_date": "li[itemscope] .cat-grid-meta time[itemprop='datePublished']::attr(datetime)"
+                "individual_objects": "li[itemscope]",
+                "site_link": ".cat-grid-title[itemprop='headline'] a::attr(href)",
+                "heading": ".cat-grid-title[itemprop='headline'] a::text",
+                "body": "div.entry-content.cat-grid-meta p::text",
+                "image_link": "figure.post-thumbnail img::attr(src)",
+                "publish_date": ".cat-grid-meta time[itemprop='datePublished']::attr(datetime)"
+            }
+        },
+    "am-online.com": {
+            "allow": ["/news/latest-news/"],
+            "startPath": ["/news/latest-news/"],
+            "format": {
+                "individual_objects": ".widget.latest-news .widget-item",
+                "site_link": ".widget-item__text a:not(.widget-item__footer--tag)::attr(href)",
+                "heading": ".widget-item__text .news-title",
+                "body": ".widget-item__text .news-body::text",
+                "image_link": ".widget-item__img img[itemprop='thumbnailUrl']::attr(src)",
+                "publish_date": ".widget-item__text .widget-item__footer--date::text"
             }
         }
 }
