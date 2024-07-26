@@ -50,5 +50,18 @@
                 "publish_date": ".posted-on time.published::text",
                 "date_format": "%d %B %Y"
             }
+        },
+    "www.smmt.co.uk": {
+            "allow": ["/"],
+            "startPath": ["/"],
+            "deny": [],
+            "format": {
+                "individual_objects": ".post",
+                "heading": "h1::text",
+                "body": ".post-entry .text p:nth-of-type(2)::text",
+                "image_link": ".post-entry .text img::attr(src)",
+                "publish_date": ".time::text",
+                "date_format": "%d %B %Y"
+            }
         }
 }
