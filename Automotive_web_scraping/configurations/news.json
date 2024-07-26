@@ -37,5 +37,18 @@
                 "publish_date": ".post-meta .article-date::text",
                 "date_format": "%d %B %Y"
             }
-        }    
+        },
+    "www.catmag.co.uk": {
+            "allow": ["/"],
+            "startPath": ["/"],
+            "deny": [],
+            "format": {
+                "individual_objects": ".site-content .site-main",
+                "heading": "h1::text",
+                "body": "article.post p::text",
+                "image_link": "img.article-main-image::attr(src)",
+                "publish_date": ".posted-on time.published::text",
+                "date_format": "%d %B %Y"
+            }
+        }
 }

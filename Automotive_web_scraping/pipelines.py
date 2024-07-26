@@ -31,4 +31,5 @@ class NewsPipeline:
                 site_link = news['site_link'][0],\
                 heading = news['heading'][0],\
                 body = news['body'][0],\
-                publish_date = datetime.strptime(StringTransformer.remove_whitespaces(news['publish_date'][0]), spider.date_format)))
+                publish_date = datetime.strptime(StringTransformer.remove_whitespaces(
+                    news['publish_date'][0]), spider.date_format)))
