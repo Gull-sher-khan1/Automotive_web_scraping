@@ -1,6 +1,7 @@
 """Contains the functionality for storing scraped data"""
+from datetime import datetime
 import dataset
-from .utils.data_utils import DataFormater
+from .utils.data_utils import DataFormater, StringTransformer
 
 class NewsPipeline:
     """Pipeline for storing and parsing news into database"""
@@ -21,7 +22,7 @@ class NewsPipeline:
         self.db.commit()
         self.db.close()
 
-    def process_item(self, news, _spider):
+    def process_item(self, news, spider):
         """Method for parsing and storing item"""
         table = self.db['headlines']
         table.insert(
@@ -30,4 +31,4 @@ class NewsPipeline:
                 site_link = news['site_link'][0],\
                 heading = news['heading'][0],\
                 body = news['body'][0],\
-                publish_date = news['publish_date'][0]))
+                publish_date = datetime.strptime(StringTransformer.remove_whitespaces(news['publish_date'][0]), spider.date_format)))

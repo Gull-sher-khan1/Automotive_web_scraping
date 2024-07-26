@@ -1,7 +1,7 @@
 """Contains utilities used through out the project"""
 import json
 import re
-from datetime import datetime
+
 
 class DataFormater:
     """Class for formating the data obtained from config.json"""
@@ -19,11 +19,6 @@ class DataFormater:
 
 class StringTransformer:
     """Class for transforming string"""
-
-    @classmethod
-    def to_datetime(cls, string):
-        """Converts the timestamp to datetime"""
-        return datetime.strptime(string, "%Y-%m-%dT%H:%M:%S%z")
 
     @classmethod
     def remove_whitespaces(cls, string):

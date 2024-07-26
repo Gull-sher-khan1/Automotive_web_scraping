@@ -1,38 +1,41 @@
 {
     "pmmonline.co.uk": {
-            "allow": ["/news/page/", "/category/news"],
-            "startPath": ["/category/news"],
+            "allow": ["/"],
+            "startPath": ["/"],
+            "deny":["/page/"],
             "format": {
-                "individual_objects": "li[itemscope]",
-                "site_link": ".cat-grid-title[itemprop='headline'] a::attr(href)",
-                "heading": ".cat-grid-title[itemprop='headline'] a::text",
-                "body": "div.entry-content.cat-grid-meta p::text",
+                "individual_objects": "article[id^='post-']",
+                "heading": "h1[itemprop='headline'].entry-title::text",
+                "body": "div.entry-content p::text",
                 "image_link": "figure.post-thumbnail img::attr(src)",
-                "publish_date": ".cat-grid-meta time[itemprop='datePublished']::attr(datetime)"
+                "publish_date": "header .entry-post-meta time::attr(datetime)",
+                "date_format": "%Y-%m-%dT%H:%M:%S%z"
             }
         },
     "am-online.com": {
-            "allow": ["/news/latest-news/"],
-            "startPath": ["/news/latest-news/"],
+            "allow": ["/"],
+            "startPath": ["/"],
+            "deny": [],
             "format": {
-                "individual_objects": ".widget.latest-news .widget-item",
-                "site_link": ".widget-item__text a:not(.widget-item__footer--tag)::attr(href)",
-                "heading": ".widget-item__text .news-title",
-                "body": ".widget-item__text .news-body::text",
-                "image_link": ".widget-item__img img[itemprop='thumbnailUrl']::attr(src)",
-                "publish_date": ".widget-item__text .widget-item__footer--date::text"
+                "individual_objects": "article[itemscope]",
+                "heading": "h1[itemprop='headline']::text",
+                "body": "section div[itemprop='articleBody'] p::text",
+                "image_link": "figure img[itemprop='image']::attr(src)",
+                "publish_date": "ul li[itemprop='datePublished']::text",
+                "date_format": "%d %B %Y"
             }
         },
     "aftermarketonline.net": {
-            "allow": ["/tag/", "/category/"],
-            "startPath": ["/category/news"],
+            "allow": ["/"],
+            "startPath": ["/"],
+            "deny": [],
             "format": {
-                "individual_objects": ".container .tease.tease-post",
-                "site_link": ".tease.tease-post h2 a::attr(href)",
-                "heading": ".tease.tease-post h2 a::text",
-                "body": ".tease.tease-post p::text",
-                "image_link": ".tease.tease-post img::attr(src)",
-                "publish_date": ".tease.tease-post .article-date::text"
+                "individual_objects": ".article-main .article",
+                "heading": "h1.post-title::text",
+                "body": "p::text",
+                "image_link": "img.article-main-image::attr(src)",
+                "publish_date": ".post-meta .article-date::text",
+                "date_format": "%d %B %Y"
             }
         }    
 }
