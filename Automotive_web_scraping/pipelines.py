@@ -13,7 +13,7 @@ class NewsPipeline:
 
     def open_spider(self, _spider):
         """callback when spider is opened"""
-        self.cred = DataFormater("db").get_data("credentials")
+        self.cred = DataFormater("db").get_data(key = "credentials")
         self.db = dataset.connect(
             f'{self.cred['database']}://'+\
             f'{self.cred['username']}:{self.cred['password']}'+\
@@ -22,8 +22,9 @@ class NewsPipeline:
 
     def close_spider(self, _spider):
         """Callback the closes the db and runs query when spider is closed"""
-        headings_to_be_stored = DuplicateHeadingsHandler([key['heading'][0] for key in self.news],
-                                                         self.db).get_stored_headings()\
+        self.remove_unnecessary_news()
+        headings_to_be_stored = DuplicateHeadingsHandler([news['heading'][0] for news in self.news],
+                                                        self.db).get_stored_headings()\
                                                             .get_non_existing_headings()
         self.store_news(headings_to_be_stored)
         self.db.commit()
@@ -31,8 +32,9 @@ class NewsPipeline:
 
     def process_item(self, news, spider):
         """Method for parsing and storing item"""
+        news['publish_date'] = datetime.strptime(StringTransformer.remove_whitespaces(
+                            news['publish_date'][0]), spider.date_format)
         self.news.append(news)
-        self.date_format = spider.date_format
 
     def store_news(self, headings):
         """Mehotd for storing news"""
@@ -44,5 +46,11 @@ class NewsPipeline:
                         site_link = news['site_link'][0],\
                         heading = news['heading'][0],\
                         body = news['body'][0],\
-                        publish_date = datetime.strptime(StringTransformer.remove_whitespaces(
-                            news['publish_date'][0]), self.date_format)))
+                        publish_date = news['publish_date'],
+                        added_at = datetime.now()))
+
+    def remove_unnecessary_news(self):
+        """remove news that does not follow the basic structure needed to zstore in DB"""
+        for news in self.news:
+            if not all(key in news for key in ("body","heading", "publish_date")):
+                self.news.remove(news)

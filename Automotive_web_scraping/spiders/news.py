@@ -17,7 +17,7 @@ class NewsSpider(CrawlSpider):
         if site is None:
             return
 
-        self.data = DataFormater(self.name).get_data(site)
+        self.data = DataFormater(self.name).get_data(key = site)
         self.rules = (Rule(LinkExtractor(allow=self.data['allow'], deny=self.data['deny']),\
                                         callback="parse_item", follow=True),)
         super().__init__(*a, **kw)
