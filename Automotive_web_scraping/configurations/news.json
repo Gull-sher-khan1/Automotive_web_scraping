@@ -4,12 +4,12 @@
             "startPath": ["/"],
             "deny":["/page/"],
             "format": {
-                "individual_objects": "article[id^='post-']",
+                "individual_objects": "article.post",
                 "heading": "h1[itemprop='headline'].entry-title::text",
                 "body": "div.entry-content p::text",
                 "image_link": "figure.post-thumbnail img::attr(src)",
-                "publish_date": "header .entry-post-meta time::attr(datetime)",
-                "date_format": "%Y-%m-%dT%H:%M:%S%z"
+                "publish_date": "header .entry-post-meta time::text",
+                "date_format": "%B %d %Y"
             }
         },
     "am-online.com": {

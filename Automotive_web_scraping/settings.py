@@ -6,7 +6,7 @@ NEWSPIDER_MODULE = "Automotive_web_scraping.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = "Automotive_web_scraping"
+# USER_AGENT = "Automotive_web_scraping"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -73,7 +73,6 @@ ITEM_PIPELINES = {
 #AUTOTHROTTLE_DEBUG = False
 
 # Enable and configure HTTP caching (disabled by default)
-# See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html#httpcache-middleware-settings
 #HTTPCACHE_ENABLED = True
 #HTTPCACHE_EXPIRATION_SECS = 0
 #HTTPCACHE_DIR = "httpcache"
