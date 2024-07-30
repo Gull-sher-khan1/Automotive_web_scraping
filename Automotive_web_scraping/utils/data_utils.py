@@ -13,9 +13,9 @@ class DataFormater:
         with open(self.data_file, "r", encoding="utf-8") as f:
             return json.load(f)
 
-    def get_data(self, key):
+    def get_data(self, key = None):
         """Returns the data needed for formating related to a site"""
-        return self.data[key]
+        return self.data[key] if key else self.data
 
 class StringTransformer:
     """Class for transforming string"""

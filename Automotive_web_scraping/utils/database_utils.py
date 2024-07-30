@@ -13,9 +13,10 @@ class DuplicateHeadingsHandler:
     def get_stored_headings(self):
         """gets all already stored headings inside the headings that are scraped"""
         table = self.db['headlines']
-        column = table.table.columns.heading
-        clause = column.in_(self.headings_to_be_stored)
-        self.stored_headings = [row['heading'] for row in table.find(clause)]
+        if len(table.table.columns) > 1:
+            column = table.table.columns.heading
+            clause = column.in_(self.headings_to_be_stored)
+            self.stored_headings = [row['heading'] for row in table.find(clause)]
         return self
 
     def get_non_existing_headings(self):
