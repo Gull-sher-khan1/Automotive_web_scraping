@@ -1,13 +1,67 @@
 {
     "pmmonline.co.uk": {
-            "allow": ["/news/page/", "/category/news"],
-            "startPath": ["/category/news"],
+            "allow": ["/"],
+            "startPath": ["/"],
+            "deny":["/page/"],
             "format": {
-                "site_link": "li[itemscope] .cat-grid-title[itemprop='headline'] a::attr(href)",
-                "heading": "li[itemscope] .cat-grid-title[itemprop='headline'] a::text",
-                "body": "li[itemscope] div.entry-content.cat-grid-meta p::text",
-                "image_link": "li[itemscope] figure.post-thumbnail img::attr(src)",
-                "publish_date": "li[itemscope] .cat-grid-meta time[itemprop='datePublished']::attr(datetime)"
+                "individual_objects": "article[id^='post-']",
+                "heading": "h1[itemprop='headline'].entry-title::text",
+                "body": "div.entry-content p::text",
+                "image_link": "figure.post-thumbnail img::attr(src)",
+                "publish_date": "header .entry-post-meta time::attr(datetime)",
+                "date_format": "%Y-%m-%dT%H:%M:%S%z"
+            }
+        },
+    "am-online.com": {
+            "allow": ["/"],
+            "startPath": ["/"],
+            "deny": [],
+            "format": {
+                "individual_objects": "article[itemscope]",
+                "heading": "h1[itemprop='headline']::text",
+                "body": "section div[itemprop='articleBody'] p::text",
+                "image_link": "figure img[itemprop='image']::attr(src)",
+                "publish_date": "ul li[itemprop='datePublished']::text",
+                "date_format": "%d %B %Y"
+            }
+        },
+    "aftermarketonline.net": {
+            "allow": ["/"],
+            "startPath": ["/"],
+            "deny": [],
+            "format": {
+                "individual_objects": ".article-main .article",
+                "heading": "h1.post-title::text",
+                "body": "p::text",
+                "image_link": "img.article-main-image::attr(src)",
+                "publish_date": ".post-meta .article-date::text",
+                "date_format": "%d %B %Y"
+            }
+        },
+    "www.catmag.co.uk": {
+            "allow": ["/"],
+            "startPath": ["/"],
+            "deny": [],
+            "format": {
+                "individual_objects": ".site-content .site-main",
+                "heading": "h1::text",
+                "body": "article.post p::text",
+                "image_link": "img.article-main-image::attr(src)",
+                "publish_date": ".posted-on time.published::text",
+                "date_format": "%d %B %Y"
+            }
+        },
+    "www.smmt.co.uk": {
+            "allow": ["/"],
+            "startPath": ["/"],
+            "deny": [],
+            "format": {
+                "individual_objects": ".post",
+                "heading": "h1::text",
+                "body": ".post-entry .text p:nth-of-type(2)::text",
+                "image_link": ".post-entry .text img::attr(src)",
+                "publish_date": ".time::text",
+                "date_format": "%d %B %Y"
             }
         }
 }
