@@ -1,12 +1,13 @@
 """Contains utilities used through out the project"""
 import json
 import re
-
+from pathlib import Path
+import os
 
 class DataFormater:
     """Class for formating the data obtained from config.json"""
     def __init__(self, name):
-        self.data_file = f"Automotive_web_scraping/configurations/{name}.json"
+        self.data_file = os.path.join(Path(__file__).parents[1], f"/configurations/{name}.json")
         self.data = self._load_data()
 
     def _load_data(self):
