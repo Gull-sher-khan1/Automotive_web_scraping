@@ -1,4 +1,4 @@
 projects:
-  default: automotive_web_scraping
+  default: 12345
 requirements:
   file: requirements.txt
