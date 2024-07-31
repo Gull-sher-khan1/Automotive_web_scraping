@@ -1,0 +1,4 @@
+projects:
+  default: automotive_web_scraping
+requirements:
+  file: requirements.txt
