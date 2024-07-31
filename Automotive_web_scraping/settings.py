@@ -1,12 +1,4 @@
 """Scrapy settings"""
-from setuptools import setup, find_packages
-
-setup(
-    name         = 'Automotive Web Scraping',
-    version      = '1.0',
-    packages     = find_packages(),
-    scripts      = ['run.py'],
-)
 
 BOT_NAME = "Automotive_web_scraping"
 
