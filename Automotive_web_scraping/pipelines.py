@@ -1,8 +1,8 @@
 """Contains the functionality for storing scraped data"""
 from datetime import datetime
 import dataset
-from .utils.data_utils import DataFormater, StringTransformer
-from .utils.database_utils import DuplicateHeadingsHandler
+from Automotive_web_scraping.utils.data_utils import DataFormater, StringTransformer
+from Automotive_web_scraping.utils.database_utils import DuplicateHeadingsHandler
 
 class NewsPipeline:
     """Pipeline for storing and parsing news into database"""
@@ -14,7 +14,7 @@ class NewsPipeline:
     def open_spider(self, _spider):
         """callback when spider is opened"""
         self.cred = DataFormater("db").get_data(key = "credentials")
-        self.db = dataset.connect('postgresql://postgres:123456@localhost:5432/5432')
+        self.db = dataset.connect('postgresql://postgres:123456@localhost:5432/scrapy')
 
     def close_spider(self, _spider):
         """Callback the closes the db and runs query when spider is closed"""

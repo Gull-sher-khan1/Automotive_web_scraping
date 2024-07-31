@@ -4,8 +4,8 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.loader import ItemLoader
 from scrapy import Selector
-from ..items import NewsItem
-from ..utils.data_utils import DataFormater
+from Automotive_web_scraping.items import NewsItem
+from Automotive_web_scraping.utils.data_utils import DataFormater
 
 class NewsSpider(CrawlSpider):
     """Generic spider class for scraping news on websites"""

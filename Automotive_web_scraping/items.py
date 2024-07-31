@@ -1,7 +1,7 @@
 """Contains item loaders"""
 import scrapy
 from itemloaders.processors import MapCompose
-from .utils.data_utils import StringTransformer
+from Automotive_web_scraping.utils.data_utils import StringTransformer
 
 class NewsItem(scrapy.Item):
     """News item and the fields containing scraped data"""
