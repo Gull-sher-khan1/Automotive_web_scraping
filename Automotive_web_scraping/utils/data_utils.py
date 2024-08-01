@@ -6,7 +6,7 @@ from pathlib import Path
 class DataFormater:
     """Class for formating the data obtained from config.json"""
     def __init__(self, name):
-        self.data_file = str(Path(__file__).parents[1]) + fr"\configurations\{name}.json"
+        self.data_file = str(Path(__file__).parents[1]) + fr"/configurations/{name}.json"
         self.data = self._load_data()
 
     def _load_data(self):
