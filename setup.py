@@ -9,4 +9,3 @@ setup(
     scripts      = ['run.py'],
     entry_points = {'scrapy': ['settings = Automotive_web_scraping.settings']},
 )
-from setuptools import setup, find_packages
