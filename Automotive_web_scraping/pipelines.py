@@ -43,7 +43,7 @@ class NewsPipeline:
                         site_link = news['site_link'][0],\
                         heading = news['heading'][0],\
                         body = news['body'][0],\
-                        publish_date = news['publish_date'],
+                        publish_date = news['publish_date'] if "publish_date" in news else next,
                         added_at = datetime.now()))
 
     def remove_unnecessary_news(self):
