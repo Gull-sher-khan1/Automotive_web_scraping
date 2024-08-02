@@ -1,8 +1,8 @@
 """Contains the functionality for storing scraped data"""
 from datetime import datetime
 import dataset
-from .utils.data_utils import DataFormater, StringTransformer
-from .utils.database_utils import DuplicateHeadingsHandler
+from Automotive_web_scraping.utils.data_utils import DataFormater, StringTransformer
+from Automotive_web_scraping.utils.database_utils import DuplicateHeadingsHandler
 
 class NewsPipeline:
     """Pipeline for storing and parsing news into database"""
@@ -14,12 +14,8 @@ class NewsPipeline:
     def open_spider(self, _spider):
         """callback when spider is opened"""
         self.cred = DataFormater("db").get_data(key = "credentials")
-        self.db = dataset.connect(
-            f'{self.cred['database']}://'+\
-            f'{self.cred['username']}:{self.cred['password']}'+\
-            f'@{self.cred['host']}:{self.cred['port']}/{self.cred['db_name']}'
-        )
-
+        self.db = dataset.connect(f"{self.cred['database']}://{self.cred['username']}:{self.cred['password']}@{self.cred['host']}:{self.cred['port']}/{self.cred['db_name']}?sslmode=require")
+    
     def close_spider(self, _spider):
         """Callback the closes the db and runs query when spider is closed"""
         self.remove_unnecessary_news()
@@ -32,8 +28,9 @@ class NewsPipeline:
 
     def process_item(self, news, spider):
         """Method for parsing and storing item"""
-        news['publish_date'] = datetime.strptime(StringTransformer.remove_whitespaces(
-                            news['publish_date'][0]), spider.date_format)
+        if "publish_date" in news:
+            news['publish_date'] = datetime.strptime(StringTransformer.remove_whitespaces(
+                                news['publish_date'][0]), spider.date_format)
         self.news.append(news)
 
     def store_news(self, headings):
