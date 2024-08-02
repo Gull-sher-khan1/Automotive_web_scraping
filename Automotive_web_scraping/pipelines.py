@@ -36,6 +36,9 @@ class NewsPipeline:
     def store_news(self, headings):
         """Mehotd for storing news"""
         for news in self.news:
+            if "publish_date" not in news:
+                next
+
             if news['heading'][0] in headings:
                 self.db['headlines'].insert(
                     dict(
@@ -43,7 +46,7 @@ class NewsPipeline:
                         site_link = news['site_link'][0],\
                         heading = news['heading'][0],\
                         body = news['body'][0],\
-                        publish_date = news['publish_date'] if "publish_date" in news else next,
+                        publish_date = news['publish_date'],
                         added_at = datetime.now()))
 
     def remove_unnecessary_news(self):
