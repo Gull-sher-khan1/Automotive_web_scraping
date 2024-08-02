@@ -42,7 +42,7 @@ class NewsPipeline:
                         image_link = news['image_link'][0] if 'image_link' in news else '',\
                         site_link = news['site_link'][0],\
                         heading = news['heading'][0],\
-                        body = news['body'][0],\
+                        body = news['body'][0] if "body" in news else next,\
                         publish_date = news['publish_date'] if "publish_date" in news else next,
                         added_at = datetime.now()))
 
