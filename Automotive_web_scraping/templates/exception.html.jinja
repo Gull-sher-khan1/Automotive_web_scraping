@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    {% for subject, body in context.items(): %}
+        <div style="width:100%; background-color:red; font-size: 20px; color: white; padding: 10px; margin:0px">
+            {{subject}}
+        </div>
+        <code style="width:100%;max-height: 500px;background-color: lightgray;margin: 0px;display: block;padding: 10px;height: fit-content;">
+            {% for msg in body: %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        </code>
+    {% endfor %}
+</body>
+</html>
