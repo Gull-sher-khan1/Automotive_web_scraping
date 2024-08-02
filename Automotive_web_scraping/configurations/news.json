@@ -54,7 +54,7 @@
     "www.smmt.co.uk": {
             "allow": ["/"],
             "startPath": ["/"],
-            "deny": [],
+            "deny": ["/member-services/technical-circulars/"],
             "format": {
                 "individual_objects": ".post",
                 "heading": "h1::text",

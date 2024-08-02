@@ -36,10 +36,7 @@ class NewsPipeline:
     def store_news(self, headings):
         """Mehotd for storing news"""
         for news in self.news:
-            if "publish_date" not in news:
-                next
-
-            if news['heading'][0] in headings:
+            if news['heading'][0] in headings and "publish_date" in news:
                 self.db['headlines'].insert(
                     dict(
                         image_link = news['image_link'][0] if 'image_link' in news else '',\
