@@ -19,7 +19,7 @@
             "format": {
                 "individual_objects": "article[itemscope]",
                 "heading": "h1[itemprop='headline']::text",
-                "body": "section div[itemprop='articleBody'] div.bodycontent",
+                "body": "section div[itemprop='articleBody']:not(:has(div.bodycontent)), section div[itemprop='articleBody'] div.bodycontent",
                 "image_link": "figure img[itemprop='image']::attr(src)",
                 "publish_date": "ul li[itemprop='datePublished']::text",
                 "date_format": "%d %B %Y"
