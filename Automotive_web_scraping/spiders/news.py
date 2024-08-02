@@ -6,17 +6,22 @@ from scrapy.loader import ItemLoader
 from scrapy import Selector
 from Automotive_web_scraping.items import NewsItem
 from Automotive_web_scraping.utils.data_utils import DataFormater
+from Automotive_web_scraping.utils.mailer_utils import MailerUtils
 
 class NewsSpider(CrawlSpider):
     """Generic spider class for scraping news on websites"""
     name = "news"
     start_urls = []
     allowed_domains = []
+    exception_handler = None
+    script = False
 
-    def __init__(self, *a, site = None, **kw):
+    def __init__(self, *a, site = None, exception_handler = MailerUtils(), script = False, **kw):
         if site is None:
             return
 
+        self.exception_handler = exception_handler
+        self.script = script
         self.data = DataFormater(self.name).get_data(key = site)
         self.rules = (Rule(LinkExtractor(allow=self.data['allow'], deny=self.data['deny']),\
                                         callback="parse_item", follow=True),)

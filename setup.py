@@ -8,7 +8,7 @@ setup(
     packages     = find_packages(),
     scripts      = ['run.py'],
     package_data = {
-        'Automotive_web_scraping': ['configurations/*.json']
+        'Automotive_web_scraping': ['configurations/*.json', 'templates/*']
     },
     entry_points = {'scrapy': ['settings = Automotive_web_scraping.settings']},
     include_package_data=True,

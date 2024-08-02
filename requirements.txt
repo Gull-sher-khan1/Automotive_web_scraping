@@ -3,3 +3,4 @@ dataset==1.6.2
 pathlib==1.0.1
 psycopg2==2.9.9
 w3lib==2.2.1
+jinja2
