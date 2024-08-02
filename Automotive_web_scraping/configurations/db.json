@@ -1,0 +1,10 @@
+{
+    "credentials": {
+        "database": "postgresql",
+        "username": "avnadmin",
+        "password": "AVNS_ntWOUZoZuW-_2NiI0hm",
+        "db_name": "defaultdb",
+        "host": "pg-982c993-gullsherkhan1-5a3f.i.aivencloud.com",
+        "port": "15313"
+    }
+}
