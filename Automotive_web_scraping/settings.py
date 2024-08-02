@@ -7,7 +7,7 @@ NEWSPIDER_MODULE = "Automotive_web_scraping.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = "Automotive_web_scraping"
+USER_AGENT = "Automotive_web_scraping"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
