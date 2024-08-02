@@ -27,8 +27,9 @@ class NewsPipeline:
 
     def process_item(self, news, spider):
         """Method for parsing and storing item"""
-        news['publish_date'] = datetime.strptime(StringTransformer.remove_whitespaces(
-                            news['publish_date'][0]), spider.date_format)
+        if "publish_date" in news:
+            news['publish_date'] = datetime.strptime(StringTransformer.remove_whitespaces(
+                                news['publish_date'][0]), spider.date_format)
         self.news.append(news)
 
     def store_news(self, headings):
