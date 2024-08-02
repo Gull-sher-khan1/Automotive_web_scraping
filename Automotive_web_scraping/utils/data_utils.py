@@ -23,4 +23,4 @@ class StringTransformer:
     @classmethod
     def remove_whitespaces(cls, string):
         """Removes white spaces and other characters from string"""
-        return ' '.join(re.sub(r'[^\w\s]','',string).split())
+        return ' '.join(re.sub(r'[^\w\s.]','',string).split())

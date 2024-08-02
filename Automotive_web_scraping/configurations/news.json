@@ -6,7 +6,7 @@
             "format": {
                 "individual_objects": "article.post",
                 "heading": "h1[itemprop='headline'].entry-title::text",
-                "body": "div.entry-content p::text",
+                "body": "div.entry-content",
                 "image_link": "figure.post-thumbnail img::attr(src)",
                 "publish_date": "header .entry-post-meta time::text",
                 "date_format": "%B %d %Y"
@@ -19,7 +19,7 @@
             "format": {
                 "individual_objects": "article[itemscope]",
                 "heading": "h1[itemprop='headline']::text",
-                "body": "section div[itemprop='articleBody'] p::text",
+                "body": "section div[itemprop='articleBody'] div.bodycontent",
                 "image_link": "figure img[itemprop='image']::attr(src)",
                 "publish_date": "ul li[itemprop='datePublished']::text",
                 "date_format": "%d %B %Y"
@@ -32,7 +32,7 @@
             "format": {
                 "individual_objects": ".article-main .article",
                 "heading": "h1.post-title::text",
-                "body": "p::text",
+                "body": "*",
                 "image_link": "img.article-main-image::attr(src)",
                 "publish_date": ".post-meta .article-date::text",
                 "date_format": "%d %B %Y"
@@ -45,8 +45,8 @@
             "format": {
                 "individual_objects": ".site-content .site-main",
                 "heading": "h1::text",
-                "body": "article.post p::text",
-                "image_link": "img.article-main-image::attr(src)",
+                "body": "article.post div.entry-content",
+                "image_link": "img.article-main-image::attr(src), article.post div.entry-content img::attr(src)",
                 "publish_date": ".posted-on time.published::text",
                 "date_format": "%d %B %Y"
             }
@@ -58,7 +58,7 @@
             "format": {
                 "individual_objects": ".post",
                 "heading": "h1::text",
-                "body": ".post-entry .text p:nth-of-type(2)::text",
+                "body": "div.post-entry",
                 "image_link": ".post-entry .text img::attr(src)",
                 "publish_date": ".time::text",
                 "date_format": "%d %B %Y"
