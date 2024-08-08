@@ -4,7 +4,6 @@ from datetime import datetime
 import dataset
 from Automotive_web_scraping.utils.data_utils import DataFormater, StringTransformer
 from Automotive_web_scraping.utils.database_utils import DuplicateHeadingsHandler
-from Automotive_web_scraping.utils.mailer_utils import MailerUtils
 
 class NewsPipeline:
     """Pipeline for storing and parsing news into database"""
@@ -16,15 +15,17 @@ class NewsPipeline:
     def open_spider(self, _spider):
         """callback when spider is opened"""
         self.cred = DataFormater("db").get_data(key = "credentials")
-        self.db = dataset.connect(f"{self.cred['database']}://{self.cred['username']}:{self.cred['password']}@{self.cred['host']}:{self.cred['port']}/{self.cred['db_name']}?sslmode=require")
-    
+        self.db = dataset.connect(f"{self.cred['database']}://{self.cred['username']}:" +\
+                                  f"{self.cred['password']}@{self.cred['host']}:" +\
+                                  f"{self.cred['port']}/{self.cred['db_name']}?sslmode=require")
+
     def close_spider(self, spider):
         """Callback the closes the db and runs query when spider is closed"""
         try:
             self.remove_unnecessary_news()
-            headings_to_be_stored = DuplicateHeadingsHandler([news['heading'][0] for news in self.news],
-                                                            self.db).get_stored_headings()\
-                                                                .get_non_existing_headings()
+            headings_to_be_stored = DuplicateHeadingsHandler(
+                [news['heading'][0] for news in self.news],
+                self.db).get_stored_headings().get_non_existing_headings()
             self.store_news(headings_to_be_stored)
             self.db.commit()
             self.db.close()

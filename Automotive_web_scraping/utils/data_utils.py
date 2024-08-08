@@ -1,4 +1,4 @@
-"""Contains utilities used through out the project"""
+"""Contains utilities used through out the project for data"""
 import json
 import re
 from pathlib import Path
