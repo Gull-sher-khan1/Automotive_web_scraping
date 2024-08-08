@@ -3,57 +3,70 @@ Scrapy project for scraping automotive news.
 
 ## Dependencies
 Please ensure that virtual environment has been set in case if it is needed before installing each dependency.
-
-1. Scrapy
-
-Needed for scraping and starting project.
-```
-    pip install scrapy
-```
-
-2. Dataset
-
-Needed for queries and storing news in DB.
-```
-    pip install dataset
-```
+All dependencies are available inside requirements.txt. These dependencies must be downloaded before scrapy project 
+is run. In addition to above requirements, 'scrapy v2.11.2' must also be installed.
 
 ## Procedure
 
-In order to scrap from the website please add configurations in 'news.json' file in following format.
+In order to scrap from the website please add configurations in configurations directory in following formats. 
+
+1. news.json
 
 ```
     {
         "[domain name]": {
-            "allow": [[URLs that are allowed to scrape in form of list]],
-            "startPath": [[Starting URLs in form of list]],
+            "allow": URL paths that are allowed to scrape in form of string[],
+            "startPath": Starting URL paths from where the scrapy must start crawling in form of string[],
+            "deny": URL paths which scrapy is not allowed to crawl in form of string[],
             "format": {
-                    "common_parent": "[CSS selector for repetitive news / items / objects acting as a parent to 'site_link', 'heading', etc.]"
-                    "site_link": "[CSS Selectors]",
-                    "heading": "[CSS Selectors]",
-                    "body": "[CSS Selectors]",
-                    "image_link": "[CSS Selectors]",
-                    "publish_date": "[CSS Selectors]"
+                    "common_parent": CSS selector in string for repetitive common parent to 'site_link', 'heading', etc.
+                    "site_link": CSS Selector in string for scraping site link of news,
+                    "heading": CSS Selector in string for scraping heading of the news,
+                    "body": CSS Selector in string for scraping body of the news,
+                    "image_link": CSS Selector in string for scraping image of the news,
+                    "publish_date": CSS Selector in string for scraping publish date of the news,
+                    "date_format": date format of the publish date to help convert before storing in DB | uses strptime
                 }
-            }
+            },...
     }
 ```
 
-After that please configure the db.json file.
+2. db.json
+
 ```
     {
-        "credentials": {
-            "database": "[sqlite/mysql/postgresql]"
-            "username": "[user name]",
-            "password": "[user password]",
-            "db_name": "[database name]",
-            "host": "[host name]",
-            "port": "[port number]"
+    "credentials": {
+        "database": database such as postgresql, mysql, sqlite, in string,
+        "username": username in string,
+        "password": password in string,
+        "db_name": database name in string,
+        "host": hostname in string,
+        "port": port number in string
         }
+    }
+
+``` 
+
+3. mail.json
+
+```
+    {
+    "sender": sender email in string,
+    "password": sender email password in string | app password from gmail,
+    "recipients": recipients in string[] format
     }
 ```
 
-News can be crawled from websites using following command
+## Execution
+
+
+News can be crawled from individual websites in case needed using following command
+
 ```
-    scrapy crawl news -a site=[domain name available in news.json]
+    scrapy crawl news -a site=domain name available in news.json in string format
+```
+
+All websites in news.json can be crawled at once by running script using this command
+```
+    python run.py
 ```
