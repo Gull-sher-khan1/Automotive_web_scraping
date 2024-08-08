@@ -1,4 +1,4 @@
-"""News Spider"""
+"""News Spider for crawling sites that are available inside configurations directory in news.json"""
 # pylint: disable=abstract-method
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
@@ -29,9 +29,9 @@ class NewsSpider(CrawlSpider):
         self.start_urls = [f"https://{site + path}" for path in self.data['startPath']]
         self.allowed_domains = [site]
         self.data = self.data['format']
-        self.individual_ojects = self.data['individual_objects']
+        self.individual_ojects = self.data['common_parent']
         self.date_format = self.data['date_format']
-        for key in ['individual_objects', 'date_format']:
+        for key in ['common_parent', 'date_format']:
             del self.data[key]
 
     def parse_item(self, response):

@@ -1,10 +1,12 @@
+"""Utility for mailers on exception"""
 # pylint: disable=dangerous-default-value
 import smtplib
 from email.mime.text import MIMEText
-from .data_utils import DataFormater
 from jinja2 import Environment, PackageLoader, select_autoescape
+from .data_utils import DataFormater
 
 class MailerUtils:
+    """Class that handles sending mails"""
     context = {}
     file = "exception"
 
@@ -17,10 +19,12 @@ class MailerUtils:
         )
 
     def assign_data(self, context):
+        """method that assigns the body"""
         for key in context:
             self.context.setdefault(key, []).append(context[key])
 
     def send_email(self, context = {}, file = None):
+        """Mehtod that sends email to all recipients"""
         self.assign_data(context)
         template = self.env.get_template(f"{file or self.file}.html.jinja")
         msg = MIMEText(template.render(context = self.context), 'html')

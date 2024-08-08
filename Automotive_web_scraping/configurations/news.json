@@ -4,7 +4,7 @@
             "startPath": ["/"],
             "deny":["/page/"],
             "format": {
-                "individual_objects": "article.post",
+                "common_parent": "article.post",
                 "heading": "h1[itemprop='headline'].entry-title::text",
                 "body": "div.entry-content",
                 "image_link": "figure.post-thumbnail img::attr(src)",
@@ -17,7 +17,7 @@
             "startPath": ["/"],
             "deny": [],
             "format": {
-                "individual_objects": "article[itemscope]",
+                "common_parent": "article[itemscope]",
                 "heading": "h1[itemprop='headline']::text",
                 "body": "section div[itemprop='articleBody']",
                 "image_link": "figure img[itemprop='image']::attr(src)",
@@ -30,7 +30,7 @@
             "startPath": ["/"],
             "deny": [],
             "format": {
-                "individual_objects": ".article-main .article",
+                "common_parent": ".article-main .article",
                 "heading": "h1.post-title::text",
                 "body": "*",
                 "image_link": "img.article-main-image::attr(src)",
@@ -43,7 +43,7 @@
             "startPath": ["/"],
             "deny": [],
             "format": {
-                "individual_objects": ".site-content .site-main",
+                "common_parent": ".site-content .site-main",
                 "heading": "h1::text",
                 "body": "article.post div.entry-content",
                 "image_link": "img.article-main-image::attr(src), article.post div.entry-content img::attr(src)",
@@ -56,7 +56,7 @@
             "startPath": ["/"],
             "deny": ["/member-services/technical-circulars/"],
             "format": {
-                "individual_objects": ".post",
+                "common_parent": ".post",
                 "heading": "h1::text",
                 "body": "div.post-entry",
                 "image_link": ".post-entry .text img::attr(src)",

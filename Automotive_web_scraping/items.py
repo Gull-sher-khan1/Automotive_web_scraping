@@ -5,6 +5,7 @@ from w3lib import html
 from Automotive_web_scraping.utils.data_utils import StringTransformer
 
 def remove_tags_and_contents(val):
+    """Method for removing unnecessaary tags and script contents"""
     return [html.remove_tags(html.remove_tags_with_content(val[0], which_ones=['script']))]
 
 class NewsItem(scrapy.Item):

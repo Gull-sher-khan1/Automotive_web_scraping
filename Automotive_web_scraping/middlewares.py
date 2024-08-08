@@ -1,6 +1,5 @@
 """Define here the models for your spider middleware"""
 from scrapy import signals
-from Automotive_web_scraping.utils.mailer_utils import MailerUtils
 
 class AutomotiveWebScrapingSpiderMiddleware:
     """Not all methods need to be defined. If a method is not defined,
